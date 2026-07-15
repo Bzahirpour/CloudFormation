@@ -1,3 +1,5 @@
 Resources:
   MyS3Bucket:
     Type: AWS::S3::Bucket
+    Properties:
+      BucketName: this-is-not-a-real-bucket-name-234364537649827370
