@@ -3,6 +3,11 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: this-is-not-a-real-bucket-name-234364537649827370
+      Tags:
+        - Key: Developer
+          Value: "Ben Z"
+        - Key: Envirionment
+          Value: "Development"
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
