@@ -8,6 +8,8 @@ Resources:
           Value: "Ben Z"
         - Key: Envirionment
           Value: "Development"
+        - Key: New Key
+          Value: 'New Value'
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
