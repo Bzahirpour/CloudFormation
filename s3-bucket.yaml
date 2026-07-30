@@ -6,6 +6,10 @@ Parameters:
     Type: String
     Description: Please enter in your name
     Default: 'Ben Z'
+  TestTagInput:
+    Type: String:
+    Description: Test tag for allowed values
+    Default: AllowedValueHere
 
 Resources:
   MyS3Bucket:
@@ -17,6 +21,8 @@ Resources:
           Value: !Ref InputDeveloperName
         - Key: Envirionment
           Value: "Development"
+        - Key: TestTag
+          Value: !Ref TestTagInput
 
     Metadata:
       Purpose: "Creating a S3 bucket"
