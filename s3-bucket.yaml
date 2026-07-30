@@ -9,7 +9,9 @@ Parameters:
   TestTagInput:
     Type: String
     Description: Test tag for allowed values
-    Default: AllowedValueHere
+    AllowedValues:
+      - One
+      - Two
 
 Resources:
   MyS3Bucket:
