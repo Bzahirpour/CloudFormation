@@ -2,7 +2,10 @@ Parameters:
   InputBucketName:
     Type: String
     Description: Please enter in your desired bucket name
-    
+  InputDeveloperName:
+    Type: String
+    Description: Please enter in your name
+    Default: 'Ben Z'
 
 Resources:
   MyS3Bucket:
@@ -11,7 +14,7 @@ Resources:
       BucketName: !Ref InputBucketName
       Tags:
         - Key: Developer
-          Value: "Ben Z"
+          Value: !Ref InputDeveloperName
         - Key: Envirionment
           Value: "Development"
 
