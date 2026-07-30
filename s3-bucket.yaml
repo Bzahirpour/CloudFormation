@@ -7,7 +7,7 @@ Parameters:
     Description: Please enter in your name
     Default: 'Ben Z'
   TestTagInput:
-    Type: String:
+    Type: String
     Description: Test tag for allowed values
     Default: AllowedValueHere
 
@@ -23,7 +23,6 @@ Resources:
           Value: "Development"
         - Key: TestTag
           Value: !Ref TestTagInput
-
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
