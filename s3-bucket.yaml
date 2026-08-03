@@ -1,5 +1,5 @@
 Mappings:
-  DevMap: 
+  TitleMap: 
     Tony:
       Title: QA
     Ben:
@@ -33,7 +33,7 @@ Resources:
         - Key: Envirionment
           Value: !Ref EnvInput
         - Key: Profession
-          Value: !FindInMap [DevMap, !Ref InputDeveloperName, Field]
+          Value: !FindInMap [TitleMap, !Ref InputDeveloperName, Title]
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
