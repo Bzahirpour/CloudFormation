@@ -1,3 +1,11 @@
+Mappings:
+  DevMap: 
+    Tony:
+      Field: QA
+    Ben:
+      Field: Cloud Engineer
+    
+
 Parameters:
   InputBucketName:
     Type: String
@@ -5,13 +13,14 @@ Parameters:
   InputDeveloperName:
     Type: String
     Description: Please enter in your name
-    Default: 'Ben Z'
-  TestTagInput:
+    Default: 'Ben'
+  EnvInput:
     Type: String
-    Description: Test tag for allowed values
+    Description: Input Environment
     AllowedValues:
-      - One
-      - Two
+      - Dev
+      - Test
+      - Prod
 
 Resources:
   MyS3Bucket:
@@ -22,9 +31,9 @@ Resources:
         - Key: Developer
           Value: !Ref InputDeveloperName
         - Key: Envirionment
-          Value: "Development"
-        - Key: TestTag
-          Value: !Ref TestTagInput
+          Value: !Ref EnvInput
+        - Key: Profession
+          Value: !FindInMap [DevMap, !Ref InputDeveloperName, Field]
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
