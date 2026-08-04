@@ -13,14 +13,13 @@ Parameters:
   InputDeveloperName:
     Type: String
     Description: Please enter in your name
-    Default: 'Ben'
+    AllowedValues: 
+      - Ben
+      - Tony
   EnvInput:
     Type: String
     Description: Input Environment
-    AllowedValues:
-      - Dev
-      - Test
-      - Prod
+    Default: 'Dev'
 
 Resources:
   MyS3Bucket:
