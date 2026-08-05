@@ -5,7 +5,6 @@ Mappings:
     Ben: #referring to the allowed values in the parameters section
       Title: Cloud Engineer
     
-
 Parameters:
   InputBucketName: #example for input parameter
     Type: String
@@ -20,6 +19,11 @@ Parameters:
     Type: String
     Description: Input Environment 'Dev', 'Test', 'Prod'
     Default: 'Dev'
+
+Conditions:
+  IsCloudEngineer: !Equals
+    - !FindInMap [TitleMap,!Ref InputDeveloperName, Title]
+    - 'Cloud Engineer'
 
 Resources:
   MyS3Bucket:
@@ -45,6 +49,7 @@ Resources:
       Contact: "Johnsmith@gmail.com"
 
   MyPublicReadPolicy:
+    Condition: IsCloudEngineer
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref InputBucketName
