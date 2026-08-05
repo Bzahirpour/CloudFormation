@@ -2,23 +2,23 @@ Mappings:
   TitleMap: 
     Tony:
       Title: QA
-    Ben:
+    Ben: #referring to the allowed values in the parameters section
       Title: Cloud Engineer
     
 
 Parameters:
-  InputBucketName:
+  InputBucketName: #example for input parameter
     Type: String
     Description: Please enter in your desired bucket name
-  InputDeveloperName:
+  InputDeveloperName: #example for allowed values
     Type: String
     Description: Please enter in your name
     AllowedValues: 
       - Ben
       - Tony
-  EnvInput:
+  EnvInput: #example for default value
     Type: String
-    Description: Input Environment
+    Description: Input Environment 'Dev', 'Test', 'Prod'
     Default: 'Dev'
 
 Resources:
@@ -26,16 +26,32 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref InputBucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: 
+        BlockPublicPolicy: 
+        IgnorePublicAcls: 
+        RestrictPublicBuckets: 
       Tags:
         - Key: Developer
           Value: !Ref InputDeveloperName
         - Key: Envirionment
           Value: !Ref EnvInput
         - Key: Profession
-          Value: !FindInMap [TitleMap, !Ref InputDeveloperName, Title]
+          Value: !FindInMap [TitleMap, !Ref InputDeveloperName, Title] #combining the mapping and parameter to get the value of the title
     Metadata:
       Purpose: "Creating a S3 bucket"
       Reviewed: "07-17-2026"
       Owner: "John Smith"
       Contact: "Johnsmith@gmail.com"
-      
+
+  MyPublicReadPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref InputBucketName
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: '*'
+            Action: 'S3:GetObject'
+            Resource: !Sub 'arn:aws:s3:::${InputBucketName}/*'
