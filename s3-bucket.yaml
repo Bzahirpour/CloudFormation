@@ -50,6 +50,7 @@ Resources:
 
   MyPublicReadPolicy:
     Condition: IsCloudEngineer
+    DependsOn: MyS3Bucket
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref InputBucketName
