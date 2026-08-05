@@ -30,11 +30,18 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Ref InputBucketName
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: 
-        BlockPublicPolicy: 
-        IgnorePublicAcls: 
-        RestrictPublicBuckets: 
+      PublicAccessBlockConfiguration: !If
+        - IsCloudEngineer
+        -
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+          IgnorePublicAcls: false
+          RestrictPublicBuckets: false
+        -
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true 
       Tags:
         - Key: Developer
           Value: !Ref InputDeveloperName
