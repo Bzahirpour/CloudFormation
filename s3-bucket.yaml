@@ -68,3 +68,13 @@ Resources:
             Principal: '*'
             Action: 'S3:GetObject'
             Resource: !Sub 'arn:aws:s3:::${InputBucketName}/*'
+
+Outputs:
+
+  BucketArn: 
+    Description: 'ARN of the created s3 bucket'
+    Value: !GetAtt MyS3Bucket.Arn
+
+  DeveloperBucketLabel:
+    Description: 'Label combining the developer name and bucket name'
+    Value: !Join [' - ', [!Ref InputDeveloperName, !Ref InputBucketName]]
